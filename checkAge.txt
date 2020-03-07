@@ -1,0 +1,36 @@
+// let birthday = document.getElementById("dob").value; //Uncaught TypeError: Cannot read property 'value' of null
+
+
+let button = document.getElementById("btn");
+let birthday = document.getElementById("dob");
+// let bDate = birthday.value;
+
+
+button.addEventListener("click", () => {
+  // console.log(document.getElementById("dob")); // shows <input type="date" id="dob">
+  // console.log(birthday.value);
+  //instantiate the bday and add 5 hours to match the 5 hr difference from UTC
+  let bDay = new Date(birthday.value); //bday is an object
+  //add 5 hours to Eastern Standard time to hit midnight
+  bDay.setHours( bDay.getHours() + 5);
+  let shortDate = bDay.toLocaleDateString();
+  // console.log(shortDate);
+
+  //write bday to document
+  document.getElementById("demo").innerHTML = `Your Birthday is ${shortDate}`;
+
+  //instantiate today
+  let today = new Date();
+  //console.log(today);
+  //Subtract today from birthday
+  let result = today - bDay;
+  // console.log(today); // typeof result is number
+  console.log(result);
+  //console.log(bDay.getTime());
+
+  // convert the number date to a readable date.
+  let parse = Date.parse(today);
+  console.log(parse);
+  // console.log(typeof bDay);
+  //console.log(bDay); // shows the long write out of the date to the console.
+});
